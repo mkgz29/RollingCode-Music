@@ -1,6 +1,11 @@
+import Navbar from "../components/navbar";
+import Songlist from "../components/Songlist";
+
 const Home = () => {
     return (
         <div>
+            <Navbar />
+            <Songlist />
             <h1>Rolling Code Music</h1>
         </div>
     )
