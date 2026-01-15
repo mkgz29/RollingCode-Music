@@ -1,77 +1,60 @@
 export const songs = [{
     id:"1",
-    tittle: "",
-    artist: "",
-    genre: "",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
-,
-{
-    id:"2",
-    tittle: "",
-    artist: "",
-    genre: "",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    duration: "3:25",  
+},{
+    id:"1",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
-,
-{
-    id:"3",
-    tittle: "",
-    artist: "",
-    genre: "",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    duration: "3:25",  
+},{
+    id:"1",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
-,
-{
-    id:"4",
-    tittle: "",
-    artist: "",
-    genre: "",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    duration: "3:25",  
+},{
+    id:"1",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
-,
-{
-    id:"5",
-    tittle: "",
-    artist: "",
-    genre: "",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    duration: "3:25",  
+},{
+    id:"1",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
-,
-{
-    id:"6",
-    tittle: "",
-    artist: "",
-    genre: "",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    duration: "3:25",  
+},{
+    id:"1",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
-,
-{
-    id:"7",
-    tittle: "",
-    artist: "",
-    genre: "",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    duration: "3:25",  
+},{
+    id:"1",
+    title: "Demo Rcmusic",
+    artist: "Mr.RcMusic",
+    genre: "Programation",
     image: "...",
-    audio: "...",
-    duration: "3:25",
-
-}
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+    duration: "3:25",  
+},
 ]
+
+export default songs;
