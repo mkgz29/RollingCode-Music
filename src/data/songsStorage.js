@@ -2,5 +2,9 @@ const keyStorage = "songs";
 
 export function getSongs {
     const data = LocalStorage.getItem(keyStorage);
-    return data ? JSON.parse(data) : [];
-}
+    if (data) {
+    return JSON.parse(data);
+} else {
+    return [];
+};
+};

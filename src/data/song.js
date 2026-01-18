@@ -19,7 +19,7 @@ export const songs = [{
     duration: "3:25",  
 },{
     id:"1",
-    title: "Demo Rcmusic",
+    title: "FACUNDO FALTO",
     artist: "Mr.RcMusic",
     genre: "Programation",
     image: cover1,
