@@ -7,6 +7,7 @@ import Admin from "./pages/Admin";
 import Detail from "./pages/Detail";
 import About from "./pages/About";
 import Login from "./pages/Login";
+import Register from './pages/Register';
 import NotFound from "./pages/Notfound";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
