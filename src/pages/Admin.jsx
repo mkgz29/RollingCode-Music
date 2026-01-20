@@ -24,7 +24,7 @@ const eliminarCancion = (id) => {
   };
 
   return (
- <div className="container my-4 lg-4">
+ <div className="container my-4 lg-4" style={{minHeight: '100vh'}}>
       <Navbar />
 
       <h1 className="m-4">Panel de Administración</h1>
