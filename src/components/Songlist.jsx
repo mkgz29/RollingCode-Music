@@ -16,7 +16,7 @@ const Songlist = () => {
                   <img src={song.image} className="card-img-top" alt={song.title} style={{height: '150px',width: "200px", objectFit: 'cover'}} />
                   
                   <p className="card-text text-muted">{song.artist}</p>
-                  {/* <audio controls src={song.audio} className="w-100"></audio> */}
+                  {<audio controls src={song.audio} className="w-100"></audio>}
                 </div>
               </div>
             </Link>
