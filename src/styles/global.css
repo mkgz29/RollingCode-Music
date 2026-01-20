@@ -22,12 +22,23 @@ a:hover {
   color: #535bf2;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
+  background-color: #000;
   min-width: 320px;
   min-height: 100vh;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -68,3 +79,40 @@ button:focus-visible {
 }
 
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+
+.nav-link {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  text-shadow: 0 5px 15px #ff021b, 0 0 25px #ff021b;
+  color: #fff !important;
+}
+
+.nav-link:hover svg {
+  filter: drop-shadow(0 0 8px #ff021b);
+}
+
+
+.form-control:focus {
+  border-color: #ff021b !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 2, 27, 0.25) !important;
+}

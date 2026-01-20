@@ -1,17 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/img/logo2navbar.png";
+import logo from "../assets/img/logonavbar.png";
+import { AiFillHome } from "react-icons/ai";
+import { BsInfoCircle } from "react-icons/bs";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { FaMusic } from "react-icons/fa";
+import { RiLoginCircleFill } from "react-icons/ri"
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black">
       <div className="container-fluid">
-        
-        {/* Logo */}
-        <Link className="navbar-brand" to="/">
-          <img src={logo} alt="Logo" width="130" height="100" />
+        <Link className="navbar-brand mr-4" to="/">
+          <img src={logo} alt="Logo"  height="40" />
         </Link>
-
-        {/* Botón hamburguesa */}
         <button
           className="navbar-toggler"
           type="button"
@@ -23,55 +24,43 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
-        {/* Links */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
+          <ul className="navbar-nav me-auto d-flex justify-content-start mb-2 mb-lg-0 " style={{ gap: '2rem' }}>
             <li className="nav-item">
               <NavLink className="nav-link" to="/">
-                Home
+                Home  <AiFillHome size={20} />
+                
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink className="nav-link" to="/about">
-                About
+                About  <BsInfoCircle size={20} />
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink className="nav-link" to="/admin">
-                Admin
+              Admin  <MdAdminPanelSettings size={20} />
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink className="nav-link" to="/detail">
-                Detail
+                Detail <FaMusic size={20} />
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink className="nav-link" to="/login">
-                Login
+                Login <RiLoginCircleFill size={20} />
               </NavLink>
             </li>
 
           </ul>
+                    <NavLink className="btn btn-outline-danger m-3" to="/register">
+            Register
+          </NavLink>
+                      <NavLink className="btn btn-outline-danger m-3" to="/login">
+            Login
+          </NavLink>
 
-          {/* Search (visual por ahora) */}
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
