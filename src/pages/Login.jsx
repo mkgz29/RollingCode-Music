@@ -35,11 +35,12 @@ function Login() {
   return (
     <div className="container vh-100 d-flex justify-content-center align-items-center">
       <div className="col-12 col-md-6 col-lg-4">
-        <h2 className="text-center mb-4">Iniciar sesión</h2>
+        <h2 id="shadowcd">Iniciar sesión</h2>
 
         {error && <div className="alert alert-danger">{error}</div>}
 
         <form onSubmit={handleSubmit}>
+        
           <div className="mb-3">
             <label className="form-label">Email</label>
             <input

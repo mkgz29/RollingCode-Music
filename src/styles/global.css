@@ -66,3 +66,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#shadowcd {
+  text-shadow: 1px 1px 2px #ff021b;
+
+}
