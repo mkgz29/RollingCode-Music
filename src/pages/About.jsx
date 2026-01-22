@@ -3,8 +3,8 @@ import Navbar from "../components/navbar";
 
 const About = () => {
   return (
-    <div>
- { <Navbar />}
+  <div>
+  { <Navbar />}
   <h1>About</h1>;
   </div>
   )

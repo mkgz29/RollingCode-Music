@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,7 +31,7 @@ a:hover {
 body {
   margin: 0;
   padding: 0;
-  background-color: #000;
+  background-color: #000000;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -53,7 +53,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #000000;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -88,7 +88,7 @@ button:focus-visible {
 body {
   margin: 0;
   padding: 0;
-  background-color: #000;
+  background-color: #000000;
 }
 
 #root {
@@ -115,4 +115,8 @@ body {
 .form-control:focus {
   border-color: #ff021b !important;
   box-shadow: 0 0 0 0.25rem rgba(255, 2, 27, 0.25) !important;
+}
+
+#homewrapper {
+  background-color: #000000;
 }
