@@ -15,16 +15,8 @@ const SearchForm = () => {
   };
 
   return (
-    <form className="d-flex  w-25  m-4 position-relative" role="search" onSubmit={handleSubmit}>
-        <IoIosSearch 
-        size={20} 
-        style={{ 
-          position: 'absolute', 
-          left: '10px', 
-          top: '50%', 
-          transform: 'translateY(-50%)',
-          color: '#888'
-        }} />
+    <form className="d-flex  w-50  mx-auto mt-4 position-relative" role="search" onSubmit={handleSubmit}>
+        
       <input
         className="form-control me-2 "
         type="search"
@@ -33,7 +25,15 @@ const SearchForm = () => {
         value={searchTerm}
         onChange={handleChange}
         style={{ paddingLeft: '40px' }}
-      />
+      /><IoIosSearch 
+        size={20} 
+        style={{ 
+          position: 'absolute', 
+          left: '10px', 
+          top: '50%', 
+          transform: 'translateY(-50%)',
+          color: '#888'
+        }} />
     </form>
   );
 };

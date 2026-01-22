@@ -25,3 +25,11 @@ export function deleteSong(id) {
 
   saveSongs(updatedSongs);
 }
+
+export function updateSong(id, updatedData) {
+  const songs = getSongs();
+  const updated = songs.map((s) =>
+    s.id === id ? { ...s, ...updatedData } : s
+  );
+  saveSongs(updated);
+}
