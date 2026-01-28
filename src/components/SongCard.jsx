@@ -17,7 +17,7 @@ const SongCard = ({ song }) => {
         <div className="card-body">
           <h5 className="card-title">{song.title}</h5>
           <p className="card-text text-muted">{song.artist}</p>
-          <audio controls src={song.audio} className="w-100" />
+          
         </div>
       </div>
     </Link>
