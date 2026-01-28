@@ -8,6 +8,7 @@ import Detail from "./pages/Detail";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import NotFound from "./pages/Notfound";
+import Subscribe from "./pages/Subscribe";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/subscribe" element={<Subscribe />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Songlist from "../components/Songlist";
+import Subscribe from "./Subscribe";
 
 const Home = () => {
     return (

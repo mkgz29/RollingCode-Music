@@ -19,7 +19,7 @@ function About() {
       id: 3,
       title: "Facundo Solano",
       text: "opinion del proyecto",
-      img: "about1",
+      img: "about3",
     },
   ];
 

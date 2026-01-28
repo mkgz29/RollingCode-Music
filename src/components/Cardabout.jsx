@@ -1,6 +1,6 @@
 import img1 from "../assets/about1.jpg";
 import img2 from "../assets/about2.jpg";
-import img3 from "../assets/about1.jpg";
+import img3 from "../assets/about3.jpg";
 
 const images = {
   about1: img1,
