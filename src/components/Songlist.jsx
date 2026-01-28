@@ -27,3 +27,5 @@ const Songlist = () => {
     </div>
   );
 };
+
+export default Songlist;

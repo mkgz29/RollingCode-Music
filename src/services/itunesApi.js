@@ -15,6 +15,7 @@ export async function searchSongs(term, limit = 12) {
     title: item.trackName || "Sin título",
     artist: item.artistName || "Sin artista",
     audio: item.previewUrl || "",
+    video: item.previewUrl || "",
     image: item.artworkUrl100
     ? item.artworkUrl100.replace("100x100", "600x600")
     : "",

@@ -84,30 +84,6 @@ const Navbar = () => {
               <span style={{ fontSize: '16px', fontWeight: '500' }}>Admin</span>
             </NavLink>
           </li>
-          <li className="nav-item mb-2">
-            <NavLink 
-              className={({ isActive }) => 
-                `nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded ${isActive ? 'bg-danger' : ''}`
-              }
-              to="/detail" 
-              onClick={() => setIsOpen(false)}
-            >
-              <FaMusic size={22} />
-              <span style={{ fontSize: '16px', fontWeight: '500' }}>Detail</span>
-            </NavLink>
-          </li>
-          <li className="nav-item mb-2">
-            <NavLink 
-              className={({ isActive }) => 
-                `nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded ${isActive ? 'bg-danger' : ''}`
-              }
-              to="/login" 
-              onClick={() => setIsOpen(false)}
-            >
-              <RiLoginCircleFill size={22} />
-              <span style={{ fontSize: '16px', fontWeight: '500' }}>Login</span>
-            </NavLink>
-          </li>
         </ul>
         <div className="d-flex flex-column gap-2 px-3 pb-4 border-top border-secondary pt-3">
           <NavLink 
