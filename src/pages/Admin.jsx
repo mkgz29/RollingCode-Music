@@ -149,7 +149,8 @@ export default function Admin() {
                   </div>
 
                   {song.audio && (
-                    <audio controls src={song.audio} className="w-100" />
+                    <audio controls src={song.audio} className="w-100" 
+                    style={{ maxWidth: '300px' }}/>
                   )}
                   {song.artist && (
                     <p className="mb-0 mt-2 text-muted">
@@ -161,6 +162,7 @@ export default function Admin() {
                       src={song.image}
                       alt={song.title}
                       className="img-fluid mt-2"
+                       style={{ maxWidth: '300px' }}
                     />
                   )}
                 </div>

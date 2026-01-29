@@ -1,35 +1,48 @@
 import { useEffect, useState } from "react";
 import { getRandomComments } from "../data/comments";
 
-const Comments = ({ id }) => {
+const Comments = ({ songId }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    // cada vez que cambia la canción, genera nuevos comentarios
-    setComments(getRandomComments(24));
-  }, [id]);
+    setComments(getRandomComments(songId, 50));
+  }, [songId]);
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 overflow-auto thin-scroll"style={{ height: "180vh" }}>
       <h5 className="text-light mb-3">Comentarios</h5>
 
       {comments.map((comment, index) => (
   <div
-    key={index}
-    className="card bg-dark text-light mb-2 rounded-4"
-    
+    key={comment.id || index}
+    className="card bg-dark text-light mb-3 rounded-4"
   >
-    <div className="card-body py-2 text-start"  >
-      <h6 className="card-subtitle mb-1 text-secondary">
-        Usuario{index + 1}
-      </h6>
-      <p className="card-text mb-0">
-        {comment}
-      </p>
+    <div className="card-body d-flex gap-3">
+
+      <img
+        src={comment.avatar}
+        alt={comment.name}
+        width="48"
+        height="48"
+        style={{ borderRadius: "50%" }}
+      />
+
+
+      <div>
+        <div className="d-flex gap-2 align-items-center">
+          <strong>{comment.name}</strong>
+          <span className="text-secondary small">
+            {comment.time}
+          </span>
+        </div>
+
+        <p className="mb-0">{comment.text}</p>
+      </div>
+
     </div>
   </div>
 ))}
-</div>
+    </div>
   );
 };
 
