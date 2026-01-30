@@ -10,18 +10,20 @@ const SubscribeForm = ({ plan }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setLoading(true); 
+    setLoading(true);
 
     setTimeout(() => {
       navigate("/notfound");
-    }, 2000); 
+    }, 2000);
   };
 
   if (loading) {
     return (
       <div className="text-center mt-5">
         <h3>Procesando suscripción...</h3>
-        <p>Plan seleccionado: <strong>{plan}</strong></p>
+        <p>
+          Plan seleccionado: <strong>{plan}</strong>
+        </p>
         <div className="spinner-border text-danger mt-3"></div>
       </div>
     );
@@ -40,12 +42,9 @@ const SubscribeForm = ({ plan }) => {
         required
       />
 
-      <button className="btn btn-danger w-100">
-        Confirmar suscripción
-      </button>
+      <button className="btn btn-danger w-20">Confirmar suscripción</button>
     </form>
   );
 };
 
 export default SubscribeForm;
-
