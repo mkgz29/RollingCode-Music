@@ -1,19 +1,39 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    return (
-        <nav>
-  <h2>RollingCode Music</h2>
+  return (
+    <nav className="navbar navbar-dark bg-dark">
+      <h2>RollingCode Music</h2>
 
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/admin">Admin</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/subscribe">Subscribe</Link></li>
+      <ul className="nav flex-column">
+        <li className="nav-item">
+          <Link className="nav-link text-light" to="/">
+            Home
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link text-light" to="/admin">
+            Admin
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link text-light" to="/about">
+            About
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link text-light" to="/login">
+            Login
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link text-light" to="/subscribe">
+            Subscribe
+          </Link>
+        </li>
       </ul>
-        </nav>
-    )
+    </nav>
+  );
 };
 
 export default Navbar;

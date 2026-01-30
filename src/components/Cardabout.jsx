@@ -10,25 +10,23 @@ const images = {
 
 const Cardabout = ({ cards }) => {
   return (
-    <div className="container text-center">
-      <div className="row">
-        {cards.map((card) => (
-          <div className="col" key={card.id}>
-            <div className="card mx-auto" style={{ width: "18rem" }}>
-              <img
-                src={images[card.img]}
-                className="card-img-top"
-                alt={card.title}
-              />
-              <div className="card-body">
-                <h5 className="card-title">{card.title}</h5>
-                <p className="card-text">{card.text}</p>
-              </div>
+    <>
+      {cards.map((card) => (
+        <div className="col-md-4" key={card.id}>
+          <div className="card bg-dark text-light h-100 border-0 shadow-sm">
+            <img
+              src={images[card.img]}
+              className="card-img-top"
+              alt={card.title}
+            />
+            <div className="card-body text-center">
+              <h5 className="card-title">{card.title}</h5>
+              <p className="card-text text-secondary">{card.text}</p>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      ))}
+    </>
   );
 };
 
