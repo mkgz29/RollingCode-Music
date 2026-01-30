@@ -1,16 +1,121 @@
-# React + Vite
+# 🎵 RollingCode Music
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web moderna para descubrir, reproducir y gestionar tu música favorita con integración de iTunes.
 
-Currently, two official plugins are available:
+## 📋 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+RollingCode Music es una plataforma de música interactiva construida con React y Vite que permite a los usuarios explorar canciones, reproducir música, dejar comentarios y buscar contenido desde iTunes. La aplicación cuenta con un diseño intuitivo y funcionalidades completas de gestión de música.
 
-## React Compiler
+## ✨ Características
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🎧 **Reproductor de Audio**: Reproduce tus canciones favoritas con controles completos
+- 🔍 **Búsqueda de iTunes**: Busca y descubre música desde la API de iTunes
+- 💬 **Sistema de Comentarios**: Comparte tus opiniones sobre las canciones
+- 📝 **Información Detallada**: Visualiza información completa de cada canción
+- 🎨 **Interfaz Moderna**: Diseño responsivo y atractivo
+- 🔐 **Panel de Administración**: Gestiona el contenido (requiere autenticación)
+- 🗂️ **Listas de Reproducción**: Organiza tus canciones favoritas
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 18**: Biblioteca de UI moderna
+- **Vite**: Herramienta de construcción ultrarrápida
+- **React Router**: Navegación entre páginas
+- **ESLint**: Linting y calidad de código
+- **CSS Moderno**: Estilos personalizados
+
+## 📦 Instalación
+
+1. Clona el repositorio:
+```bash
+git clone <url-del-repositorio>
+cd "RollingCode Music"
+```
+
+2. Instala las dependencias:
+```bash
+npm install
+```
+
+3. Inicia el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+4. Abre tu navegador en ``
+
+## 🛠️ Scripts Disponibles
+
+```bash
+npm run dev          # Inicia el servidor de desarrollo
+npm run build        # Construye la aplicación para producción
+npm run preview      # Previsualiza la build de producción
+npm run lint         # Ejecuta ESLint para verificar el código
+```
+
+## 📁 Estructura del Proyecto
+
+```
+RollingCode Music/
+├── public/              # Archivos estáticos
+├── src/
+│   ├── assets/         # Imágenes y recursos
+│   ├── components/     # Componentes reutilizables
+│   │   ├── Audioplayer.jsx
+│   │   ├── SearchItunes.jsx
+│   │   ├── SongCard.jsx
+│   │   ├── Songlist.jsx
+│   │   └── ...
+│   ├── data/           # Datos y almacenamiento local
+│   ├── pages/          # Páginas de la aplicación
+│   │   ├── Home.jsx
+│   │   ├── Detail.jsx
+│   │   ├── Admin.jsx
+│   │   └── ...
+│   ├── services/       # Servicios y APIs
+│   │   └── itunesApi.js
+│   ├── styles/         # Estilos globales
+│   ├── App.jsx         # Componente principal
+│   └── main.jsx        # Punto de entrada
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## 🔧 Configuración
+
+La aplicación está configurada con:
+
+- **Vite**: Configuración optimizada para desarrollo rápido
+- **ESLint**: Reglas de linting para mantener código limpio
+- **React Router**: Para navegación SPA
+
+## 📱 Páginas
+
+- **Home**: Página principal con lista de canciones
+- **Detail**: Vista detallada de una canción
+- **About**: Información sobre la aplicación
+- **Admin**: Panel de administración
+- **Login**: Página de autenticación
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Haz fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT.
+
+## 👨‍💻 Autor
+
+Desarrollado con ❤️ por el equipo de RollingCode
+
+---
+
+⭐ Si te gusta este proyecto, no olvides darle una estrella!
