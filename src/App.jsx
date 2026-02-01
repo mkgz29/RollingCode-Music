@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
@@ -10,10 +10,12 @@ import Login from "./pages/Login";
 import NotFound from "./pages/Notfound";
 import Subscribe from "./pages/Subscribe";
 
-function App() {
+function AnimatedRoutes() {
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -22,6 +24,14 @@ function App() {
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AnimatedRoutes />
     </BrowserRouter>
   );
 }

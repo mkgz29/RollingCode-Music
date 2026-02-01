@@ -1,19 +1,31 @@
-import songs from '../data/song.js';
+import { useEffect, useState } from "react";
+import { getSongs } from "../data/songsStorage";
+import SongCard from "./SongCard.jsx";
 
 const Songlist = () => {
-    return (
-         <div>
-      <h2>Lista de canciones</h2>
+  const [songs, setSongs] = useState([]);
 
-      {songs.map((song) => (
-        <div key={song.id}>
-          <h4>{song.tittle}</h4>
-          <p>{song.artist}</p>
-          <audio controls src={song.audio}></audio>
-        </div>
-      ))}
+  useEffect(() => {
+    setSongs(getSongs());
+  }, []);
+
+  if (songs.length === 0) {
+    return (
+      <p className="text-center text-muted mt-5">No hay canciones cargadas</p>
+    );
+  }
+
+  return (
+    <div className="container my-4">
+      <div className="row g-4">
+        {songs.map((song) => (
+          <div key={song.id} className="col-12 col-sm-6 col-lg-4">
+            <SongCard song={song} />
+          </div>
+        ))}
+      </div>
     </div>
-    )
+  );
 };
 
 export default Songlist;
