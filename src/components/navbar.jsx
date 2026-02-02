@@ -5,9 +5,10 @@ import { BsInfoCircle } from "react-icons/bs";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FaMusic } from "react-icons/fa";
 import { RiLoginCircleFill } from "react-icons/ri";
+import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ onSearchToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -23,6 +24,14 @@ const Navbar = () => {
           width: '1.5em',
           height: '1.5em'
         }}></span>
+      </button>
+
+      <button 
+        className="btn btn-dark d-lg-none position-fixed m-2" 
+        style={{ top: '0', right: '0', zIndex: 1050 }}
+        onClick={onSearchToggle}
+      >
+        <IoIosSearch size={24} />
       </button>
 
       <nav 

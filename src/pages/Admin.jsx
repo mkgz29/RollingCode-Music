@@ -10,6 +10,7 @@ export default function Admin() {
   const [audio, setAudio] = useState("");
   const [songs, setSongs] = useState(getSongs());
   const [editingId, setEditingId] = useState(null);
+  const [category, setCategory] = useState("hits");
 
   const agregarCancion = (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ export default function Admin() {
               artist: artist.trim(),
               image: image.trim(),
               audio: audio.trim(),
+              category,
             }
           : song,
       );
@@ -35,6 +37,7 @@ export default function Admin() {
         artist: artist.trim(),
         image: image.trim(),
         audio: audio.trim(),
+        category,
       });
       setSongs(getSongs());
     }
@@ -57,7 +60,9 @@ export default function Admin() {
     setImage(song.image || "");
     setAudio(song.audio || "");
     setEditingId(song.id);
+    setCategory(song.category || "hits");
   };
+
   return (
     <div className="container-fluid">
       <div className="row min-vh-100">
@@ -66,11 +71,11 @@ export default function Admin() {
         </aside>
 
         <main className="col-12 col-md-9 col-lg-10 p-3 p-md-5  text-white">
-          <h1 className="mb-4 fw-bold">Panel de Administracion</h1>
+          <h1 className="mb-4 fw-bold">Administration Panel</h1>
           <SearchItunes onSave={() => setSongs(getSongs())} />
           <div className="card shadow-sm mb-4">
             <div className="card-body">
-              <h5 className="card-title mb-3">Agregar nueva canción</h5>
+              <h5 className="card-title mb-3">Add new song</h5>
 
               <form onSubmit={agregarCancion} className="row g-3">
                 <div className="col-12 col-md-6">
@@ -78,7 +83,7 @@ export default function Admin() {
                     className="form-control"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Nombre de la canción"
+                    placeholder="Song name"
                     required
                   />
                 </div>
@@ -88,7 +93,7 @@ export default function Admin() {
                     className="form-control"
                     value={audio}
                     onChange={(e) => setAudio(e.target.value)}
-                    placeholder="URL del audio (mp3)"
+                    placeholder="Audio URL (mp3)"
                     required
                   />
                 </div>
@@ -97,7 +102,7 @@ export default function Admin() {
                     className="form-control"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                    placeholder="URL de la imagen"
+                    placeholder="Image URL"
                     required
                   />
                 </div>
@@ -106,55 +111,74 @@ export default function Admin() {
                     className="form-control"
                     value={artist}
                     onChange={(e) => setArtist(e.target.value)}
-                    placeholder="Nombre del artista"
+                    placeholder="Artist name"
                     required
                   />
                 </div>
+                <div className="col-12 col-md-6">
+                  <select
+                    className="form-select"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    required
+                  >
+                    <option value="hits">Hit Lists</option>
+                    <option value="community">Community</option>
+                    <option value="featured">Featured Songs</option>
+                  </select>
+                </div>
                 <div className="col-12">
-                  <button className="btn btn-danger" type="submit" style={{ fontSize: '16px', fontWeight: '500' }}>
-                    Agregar Canción
+                  <button
+                    className="btn btn-danger"
+                    type="submit"
+                    style={{ fontSize: "16px", fontWeight: "500" }}
+                  >
+                    Add Song
                   </button>
                 </div>
               </form>
             </div>
           </div>
 
-          <h2 className="h5 mb-3">Canciones guardadas ({songs.length})</h2>
+          <h2 className="h5 mb-3">Saved songs ({songs.length})</h2>
 
           <div className="list-group shadow-sm">
             {songs.length === 0 ? (
               <div className="list-group-item text-center text-muted py-4">
-                No hay canciones agregadas
+                No songs added
               </div>
             ) : (
               songs.map((song) => (
                 <div key={song.id} className="list-group-item">
                   <h6 className="mb-0 fw-semibold">{song.title}</h6>
                   <div className="d-flex justify-content-center align-items-start gap-3 mb-4 mt-4">
-                    
                     <button
                       className="btn btn-sm btn-outline-dark flex-shrink-0 me-2"
                       onClick={() => editarCancion(song)}
-                      style={{ fontSize: '16px', fontWeight: '500' }}
+                      style={{ fontSize: "16px", fontWeight: "500" }}
                     >
-                      Editar
+                      Edit
                     </button>
                     <button
                       className="btn btn-sm btn-danger flex-shrink-0"
                       onClick={() => eliminarCancion(song.id)}
-                      style={{ fontSize: '16px', fontWeight: '500' }}
+                      style={{ fontSize: "16px", fontWeight: "500" }}
                     >
-                      Eliminar
+                      Delete
                     </button>
                   </div>
 
                   {song.audio && (
-                    <audio controls src={song.audio} className="w-100" 
-                    style={{ maxWidth: '300px' }}/>
+                    <audio
+                      controls
+                      src={song.audio}
+                      className="w-100"
+                      style={{ maxWidth: "300px" }}
+                    />
                   )}
                   {song.artist && (
                     <p className="mb-0 mt-2 text-muted">
-                      Artista: {song.artist}
+                      Artist: {song.artist}
                     </p>
                   )}
                   {song.image && (
@@ -162,7 +186,7 @@ export default function Admin() {
                       src={song.image}
                       alt={song.title}
                       className="img-fluid mt-2"
-                       style={{ maxWidth: '300px' }}
+                      style={{ maxWidth: "300px" }}
                     />
                   )}
                 </div>

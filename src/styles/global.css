@@ -127,15 +127,15 @@ body {
 
 .detail-logo {
   position: fixed;
-  top: 30px;
-  left: 20px;
+  top: 15px;
+  left: 10px;
   z-index: 1000;
   cursor: pointer;
 }
 
 .detail-logo img {
-  width: 68px;
-  height: 58px;
+  width: 50px;
+  height: 43px;
   border-radius: 50%;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -145,13 +145,25 @@ body {
   opacity: 0.85;
 }
 
+@media (min-width: 768px) {
+  .detail-logo {
+    top: 30px;
+    left: 20px;
+  }
+  
+  .detail-logo img {
+    width: 68px;
+    height: 58px;
+  }
+}
+
 .thin-scroll {
-  scrollbar-width: thin;                       /* Firefox */
-  scrollbar-color: rgba(255,255,255,.25) transparent; /* Firefox */
+  scrollbar-width: thin;                       
+  scrollbar-color: rgba(255,255,255,.25) transparent; 
 }
 
 .thin-scroll::-webkit-scrollbar {
-  width: 8px;                                 /* Chrome/Edge */
+  width: 8px;                                 
 }
 
 .thin-scroll::-webkit-scrollbar-track {
@@ -161,7 +173,7 @@ body {
 .thin-scroll::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,.22);
   border-radius: 12px;
-  border: 2px solid transparent;              /* efecto “píldora” */
+  border: 2px solid transparent;            
   background-clip: padding-box;
 }
 
@@ -184,7 +196,7 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #1db954; /* verde spotify */
+  background: #1db954; 
 }
 
 .volume-slider::-moz-range-thumb {
@@ -192,4 +204,85 @@ body {
   height: 12px;
   border-radius: 50%;
   background: #1db954;
+}
+
+
+.scroll-section::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-section::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.scroll-section::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.scroll-section:hover::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.scroll-section::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.scroll-section {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scroll-section:hover {
+  scrollbar-color: #888 #1a1a1a;
+}
+
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #000000;
+  border: 1px solid #333;
+  border-radius: 8px;
+  list-style: none;
+  margin: 5px 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.search-suggestions li {
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.search-suggestions li:last-child {
+  border-bottom: none;
+}
+
+.search-suggestions li:hover {
+  background: #2a2a2a;
+}.search-suggestions li.active {
+  background: #222;
+  color: #fff;
+}
+
+.form-control {
+  background-color: #000000 !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+.form-control::placeholder {
+  color: #888 !important;
 }

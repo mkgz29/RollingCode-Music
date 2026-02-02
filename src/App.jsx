@@ -8,6 +8,7 @@ import Detail from "./pages/Detail";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import NotFound from "./pages/Notfound";
+import SearchResults from "./pages/SearchResults";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function AnimatedRoutes() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />

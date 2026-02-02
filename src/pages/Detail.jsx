@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getSongs } from "../data/songsStorage";
 import Comments from "../components/Comments.jsx";  
@@ -12,13 +12,17 @@ import { motion } from "framer-motion";
 
 const Detail = () => {
   const { id } = useParams();
-  const songs = getSongs();
-  const song = songs.find((s) => String(s.id) === String(id));
+  const location = useLocation();
   const [canAutoPlay, setCanAutoPlay] = useState(false);
 
-useEffect(() => {
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-}, [id]);
+  const songFromState = location.state?.song;
+  const songFromLocal = getSongs().find((s) => String(s.id) === String(id));
+  const song = songFromState || songFromLocal;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [id]);
+
   useEffect(() => {
     setCanAutoPlay(false);
     const timer = setTimeout(() => {
@@ -28,7 +32,7 @@ useEffect(() => {
     return () => clearTimeout(timer);
   }, [id]);
 
-  if (!song) return <p>Canción no encontrada</p>;
+  if (!song) return <p className="text-white">Song not found</p>;
 
   return (
 <motion.div
