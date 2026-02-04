@@ -66,7 +66,7 @@ export default function Admin() {
   return (
     <div style={{ backgroundColor: "#000", minHeight: "100vh" }}>
       <Navbar />
-      <main className="p-3 p-md-5 text-white" style={{ paddingTop: "20px" }}>
+      <main className="p-3 p-md-5 text-white admin-main-container">
         <div className="admin-content">
           <div className="text-center mb-5">
             <h1 className="fw-bold display-4" style={{ color: "#fff" }}>Administration Panel</h1>
@@ -309,9 +309,14 @@ export default function Admin() {
         </div>
         
         <style>{`
+          .admin-main-container {
+            padding-top: 20px;
+          }
+          
           .admin-content {
             margin-left: 270px;
-            max-width: 1400px;
+            max-width: calc(100vw - 320px);
+            width: 100%;
           }
           
           @media (max-width: 992px) {
