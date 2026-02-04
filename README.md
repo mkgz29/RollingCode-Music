@@ -106,7 +106,6 @@ Cuenta con permisos limitados dentro de la plataforma.
 
 * **[gonzavip@rolling.com](mailto:gonzavip@rolling.com)**
   Password: `gonza1234`
-  Welcome Message: 🎵 Welcome Gonza to Rolling Code Music
 
 ---
 
