@@ -13,48 +13,48 @@ const AudioPlayer = ({ audioSrc, autoPlay = true }) => {
   return (
     <div style={{ marginTop: 12 }}>
       <audio ref={audioRef} src={audioSrc} />
-      <div className="d-flex justify-content-center align-items-center gap-5 mt-4 mb-4">
+      <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 gap-md-4 gap-lg-5 mt-4 mb-4">
         {/* Shuffle */}
-        <button className="btn btn-outline-light" onClick={() => alert("Falta implementar")}>
-          <i className="bi bi-shuffle fs-4"></i>
+        <button className="btn btn-outline-light btn-sm btn-md-md" onClick={() => alert("Not implemented yet")}>
+          <i className="bi bi-shuffle fs-5 fs-md-4"></i>
         </button>
 
         {/* Previous */}
-        <button className="btn btn-outline-light" onClick={() => alert("Falta implementar")}>
-          <i className="bi bi-skip-start-fill fs-4"></i>
+        <button className="btn btn-outline-light btn-sm btn-md-md" onClick={() => alert("Not implemented yet")}>
+          <i className="bi bi-skip-start-fill fs-5 fs-md-4"></i>
         </button>
 
         {/* Play */}
-        <button className="btn btn-success btn-lg" onClick={() => audioRef.current?.play()}>
-          <i className="bi bi-play-fill fs-3 rounded-pill  "></i>
+        <button className="btn btn-success" onClick={() => audioRef.current?.play()}>
+          <i className="bi bi-play-fill fs-4 fs-md-3 rounded-pill  "></i>
         </button>
 
         {/* Pause */}
-        <button className="btn btn-danger btn-lg" onClick={() => audioRef.current?.pause()}>
-          <i className="bi bi-pause-fill fs-3 text-light"></i>
+        <button className="btn btn-danger" onClick={() => audioRef.current?.pause()}>
+          <i className="bi bi-pause-fill fs-4 fs-md-3 text-light"></i>
         </button>
 
         {/* Next */}
-        <button className="btn btn-outline-light" onClick={() => alert("Falta implementar")}>
-          <i className="bi bi-skip-end-fill fs-4"></i>
+        <button className="btn btn-outline-light btn-sm btn-md-md" onClick={() => alert("Not implemented yet")}>
+          <i className="bi bi-skip-end-fill fs-5 fs-md-4"></i>
         </button>
 
         {/* Repeat */}
-        <button className="btn btn-outline-light" onClick={() => alert("Falta implementar")}>
-          <i className="bi bi-repeat fs-4"></i>
+        <button className="btn btn-outline-light btn-sm btn-md-md" onClick={() => alert("Not implemented yet")}>
+          <i className="bi bi-repeat fs-5 fs-md-4"></i>
         </button>
 
         {/* Like */}
-        <button className="btn btn-outline-success" onClick={() => alert("Falta implementar")}>
-        <i className="bi bi-hand-thumbs-up text-light fs-5"></i>
+        <button className="btn btn-outline-success btn-sm btn-md-md" onClick={() => alert("Not implemented yet")}>
+        <i className="bi bi-hand-thumbs-up text-light fs-6 fs-md-5"></i>
         </button>
 
-                <button className="btn btn-outline-danger " onClick={() => alert("Falta implementar")}>
-        <i className="bi bi-hand-thumbs-down text-light fs-5"></i>
+                <button className="btn btn-outline-danger btn-sm btn-md-md" onClick={() => alert("Not implemented yet")}>
+        <i className="bi bi-hand-thumbs-down text-light fs-6 fs-md-5"></i>
         </button>
 
         {/* Volume Control */}
-        <div className="d-flex align-items-center gap-3 fs-1">
+        <div className="d-none d-md-flex align-items-center gap-3 fs-1">
 <i className="bi bi-soundwave text-light" ></i>
           <input
             type="range"
