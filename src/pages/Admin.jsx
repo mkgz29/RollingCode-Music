@@ -64,13 +64,9 @@ export default function Admin() {
   };
 
   return (
-    <div className="container-fluid" style={{ backgroundColor: "#000" }}>
-      <div className="row min-vh-100">
-        <aside className="col-12 col-md-3 col-lg-2 p-0">
-          <Navbar />
-        </aside>
-
-        <main className="col-12 col-md-9 col-lg-10 p-3 p-md-5 text-white" style={{ marginTop: "60px" }}>
+    <div style={{ backgroundColor: "#000", minHeight: "100vh" }}>
+      <Navbar />
+      <main className="p-3 p-md-5 text-white" style={{ marginLeft: "270px", paddingTop: "20px", maxWidth: "1400px" }}>
           <div className="text-center mb-5">
             <h1 className="fw-bold display-4" style={{ color: "#fff" }}>Administration Panel</h1>
             <p style={{ color: "#b3b3b3" }}>Manage your music library</p>
@@ -310,7 +306,6 @@ export default function Admin() {
             )}
           </div>
         </main>
-      </div>
     </div>
   );
 }

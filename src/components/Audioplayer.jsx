@@ -1,4 +1,3 @@
-// src/components/AudioPlayer.jsx
 import { useRef, useEffect } from "react";
 
 const AudioPlayer = ({ audioSrc, autoPlay = true }) => {

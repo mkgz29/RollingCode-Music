@@ -1,7 +1,7 @@
 import { seedUsers } from "./authSeed";
 
 export const authenticateUser = (email, password) => {
-  seedUsers(); // Asegura precargados
+  seedUsers();
 
   const users = JSON.parse(localStorage.getItem("users")) || [];
 

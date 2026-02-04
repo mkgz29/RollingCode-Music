@@ -1,4 +1,3 @@
-// src/components/SongInfo.jsx
 const SongInfo = ({ title, artist, album, image }) => {
   return (
     <div className="text-center mt-4 mb-4">

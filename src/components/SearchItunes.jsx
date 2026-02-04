@@ -16,7 +16,6 @@ export default function SearchItunes({ onSave }) {
     try {
       const songs = await searchSongs(term, 12);
       setResults(songs);
-      // Inicializar categorías para cada canción
       const initialCategories = {};
       songs.forEach(song => {
         initialCategories[song.id] = "hits";
@@ -36,7 +35,7 @@ export default function SearchItunes({ onSave }) {
 
     const category = selectedCategories[song.id] || "hits";
     addSong({ ...song, category });
-    onSave?.(); // para que Admin refresque lista
+    onSave?.();
   };
 
   const handleCategoryChange = (songId, category) => {

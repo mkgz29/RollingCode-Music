@@ -43,7 +43,14 @@ function AnimatedRoutes() {
 
         <Route path="/search" element={<SearchResults />} />
 
-        <Route path="/admin" element={<Admin />} />
+        <Route 
+          path="/admin" 
+          element={
+            <RequireRole allowedRoles={[ROLES.ADMIN]}>
+              <Admin />
+            </RequireRole>
+          } 
+        />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
