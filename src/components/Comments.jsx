@@ -9,8 +9,8 @@ const Comments = ({ songId }) => {
   }, [songId]);
 
   return (
-    <div className="container mt-4 overflow-auto thin-scroll"style={{ height: "180vh" }}>
-      <h5 className="text-light mb-3">Comentarios</h5>
+    <div className="container mt-4 overflow-auto thin-scroll" style={{ height: "80vh", maxHeight: "180vh" }}>
+      <h5 className="text-light mb-3">Comments</h5>
 
       {comments.map((comment, index) => (
   <div

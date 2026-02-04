@@ -1,21 +1,34 @@
 import Navbar from "../components/Navbar";
 import Songlist from "../components/Songlist";
-import Subscribe from "./Subscribe";
 import SearchForm from "../components/SearchForm";
+import { useState } from "react";
 
 const Home = () => {
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
+
   return (
     <>
-      <Navbar />
+      <Navbar onSearchToggle={() => setShowMobileSearch(!showMobileSearch)} />
 
-      <div style={{ marginLeft: "0" }} className="ms-lg-0 ps-lg-0">
+      <div
+        style={{ marginLeft: "0", backgroundColor: "#000000" }}
+        className="ms-lg-0 ps-lg-0"
+      >
         <div
           className="content-wrapper"
           id="homewrapper"
-          style={{ paddingLeft: "0" }}
+          style={{
+            paddingLeft: "0",
+            paddingTop: showMobileSearch ? "0" : "60px",
+            backgroundColor: "#000000",
+            minHeight: "100vh",
+          }}
         >
-          <h1>Welcome to RollingCode Music</h1>
-          <SearchForm />
+          <div
+            className={`${showMobileSearch ? "d-block" : "d-none"} d-lg-block`}
+          >
+            <SearchForm />
+          </div>
 
           <Songlist />
         </div>
@@ -32,7 +45,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/* Home, funcion flecha que representa la pantalla de la app, App.jsx renderiza Home.jsx 
-
-Home = pantalla principal */

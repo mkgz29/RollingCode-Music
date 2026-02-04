@@ -12,8 +12,9 @@ export async function searchSongs(term, limit = 12) {
 
   return (data.results || []).map((item) => ({
     id: String(item.trackId), 
-    title: item.trackName || "Sin título",
-    artist: item.artistName || "Sin artista",
+    title: item.trackName || "Untitled",
+    artist: item.artistName || "Unknown artist",
+    album: item.collectionName || "Unknown album",
     audio: item.previewUrl || "",
     video: item.previewUrl || "",
     image: item.artworkUrl100

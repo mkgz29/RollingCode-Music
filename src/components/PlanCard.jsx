@@ -5,7 +5,6 @@ const PlanCard = ({ title, price, features = [], badge, onSelect }) => {
       style={{ maxWidth: "360px", minHeight: "440px" }}
     >
       <div className="card-body d-flex flex-column">
-        {/* Badge */}
         {badge && (
           <span className="badge bg-danger align-self-center mb-3 px-3 py-2">
             {badge}
@@ -17,7 +16,6 @@ const PlanCard = ({ title, price, features = [], badge, onSelect }) => {
         <p className="display-6 text-danger mb-0">{price}</p>
         <span className="text-secondary">por mes</span>
 
-        {/* Features */}
         <ul className="list-unstyled mt-4 text-start flex-grow-1">
           {features.map((feature, i) => (
             <li key={i} className="mb-2">
