@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/img/logonavbar.png";
 import { AiFillHome } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
@@ -14,6 +14,11 @@ const Navbar = ({ onSearchToggle }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const showSearchButton = ['/home', '/detail', '/search'].some(path => 
+    location.pathname.toLowerCase().includes(path.toLowerCase())
+  );
 
   useEffect(() => {
     const checkAuth = () => {
@@ -80,13 +85,15 @@ const Navbar = ({ onSearchToggle }) => {
         ></span>
       </button>
 
-      <button
-        className="btn btn-dark d-lg-none position-fixed m-2"
-        style={{ top: "0", right: "0", zIndex: 1050 }}
-        onClick={onSearchToggle}
-      >
-        <IoIosSearch size={24} />
-      </button>
+      {showSearchButton && (
+        <button
+          className="btn btn-dark d-lg-none position-fixed m-2"
+          style={{ top: "0", right: "0", zIndex: 1050 }}
+          onClick={onSearchToggle}
+        >
+          <IoIosSearch size={24} />
+        </button>
+      )}
 
       <nav
         className={`bg-black text-white d-flex flex-column vh-100 position-fixed ${isOpen ? "" : "d-none"} d-lg-flex`}
@@ -345,7 +352,7 @@ const Navbar = ({ onSearchToggle }) => {
         </div>
       </nav>
 
-      {/* Overlay oscuro cuando el menú está abierto en móvil */}
+
       {isOpen && (
         <div
           className="d-lg-none position-fixed w-100 h-100"
