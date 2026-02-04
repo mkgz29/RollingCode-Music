@@ -65,9 +65,7 @@ navigate("/home");
 
 
         <h1 id="shadowcd2">Login</h1>
-        <span className="required-fields">
-          Required Fields *
-        </span>
+        
 
         <form noValidate onSubmit={handleSubmit}>
 

@@ -92,12 +92,10 @@ const Register = () => {
  };
 
   return (
-    <div className="conteiner-fluid min-vh-100 d-flex justify-content-center align-items-center page-bg">
+    <div className="conteiner-fluid min-vh-100 d-flex justify-content-center align-items-center page-bg filter-light">
       <form className="col g-2 px-3 px-sm-4px-md-0" onSubmit={handleSubmit} noValidate>
         <h1 className="mb-5 text-light text-center">Register</h1>
-        <span className="required-fields2">
-          Required Fields *
-        </span>
+        
         <div className="col-lg-3 mb-3 mx-auto">
           <label htmlFor="validationServer01" className="form-label text-light"></label>
           <input
