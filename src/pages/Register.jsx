@@ -1,16 +1,21 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom';
+import Swal from "sweetalert2";
 
-const Login = () => {
+const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    username: "",
-    city: "",
+    Email: "",
+    password: "",
+    repeatPassword: "",
     terms: false
   });
 
   const [errors, setErrors] = useState({});
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -19,126 +24,249 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const newErrors = {};
-    
-    if (!formData.firstName) newErrors.firstName = "Please enter first name.";
-    if (!formData.lastName) newErrors.lastName = "Please enter last name.";
-    if (!formData.username) newErrors.username = "Please choose a username.";
-    if (!formData.city) newErrors.city = "Please provide a valid city.";
-    if (!formData.terms) newErrors.terms = "You must agree before submitting.";
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-    setErrors(newErrors);
+  const newErrors = {};
 
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
-    }
+  if (!formData.firstName) newErrors.firstName = "Please enter first name.";
+  if (!formData.lastName) newErrors.lastName = "Please enter last name.";
+
+  if (!formData.Email) {
+    newErrors.Email = "Please Email is required.";
+  } else if (!formData.Email.includes("@")) {
+    newErrors.Email = "Please Email must contain @.";
+  }
+
+  if (!formData.password) {
+    newErrors.password = "Please provide a password.";
+  } else if (formData.password.length < 8) {
+    newErrors.password = "Password must be at least 8 characters long.";
+  }
+
+  if (formData.password !== formData.repeatPassword) {
+    newErrors.repeatPassword = "Passwords do not match.";
+  }
+
+  if (!formData.terms) {
+    newErrors.terms = "You must agree before submitting.";
+  }
+
+  setErrors(newErrors);
+
+  if (Object.keys(newErrors).length !== 0) return;
+
+  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+  const userExists = existingUsers.some(
+    (user) => user.email === formData.Email
+  );
+
+  if (userExists) {
+    setErrors({ Email: "Email is already registered." });
+    return;
+  }
+
+  const newUser = {
+    email: formData.Email,
+    password: formData.password,
+    role: "user",
   };
 
-  return (
-    <div className="container my-4">
-      <h2 className="mb-4">Login</h2>
-      <form className="row g-3" onSubmit={handleSubmit}>
-        <div className="col-md-4">
-          <label htmlFor="validationServer01" className="form-label">First name</label>
-          <input 
-            type="text" 
-            className={`form-control ${formData.firstName && !errors.firstName ? 'is-valid' : ''} ${errors.firstName ? 'is-invalid' : ''}`}
-            id="validationServer01" 
-            name="firstName"
-            value={formData.firstName} 
-            onChange={handleChange}
-            required
-          />
-          <div className="valid-feedback">
-            Looks good!
-          </div>
-          {errors.firstName && <div className="invalid-feedback d-block">{errors.firstName}</div>}
-        </div>
+  existingUsers.push(newUser);
+  localStorage.setItem("users", JSON.stringify(existingUsers));
 
-        <div className="col-md-4">
-          <label htmlFor="validationServer02" className="form-label">Last name</label>
-          <input 
-            type="text" 
-            className={`form-control ${formData.lastName && !errors.lastName ? 'is-valid' : ''} ${errors.lastName ? 'is-invalid' : ''}`}
-            id="validationServer02" 
-            name="lastName"
-            value={formData.lastName} 
+  localStorage.removeItem("auth");
+
+  Swal.fire({
+    icon: "success",
+    title: "Registration Successful",
+    text: "You have registered successfully. Please log in.",
+    confirmButtonText: "OK",
+    confirmButtonColor: "#dc3545",
+    background: "#343a40",
+    color: "#ffffff",
+  }).then(() => {
+    navigate("/login");
+  });
+ };
+
+  return (
+    <div className="conteiner-fluid min-vh-100 d-flex justify-content-center align-items-center page-bg">
+      <form className="col g-2 px-3 px-sm-4px-md-0" onSubmit={handleSubmit} noValidate>
+        <h1 className="mb-5 text-light text-center">Register</h1>
+        <span className="required-fields2">
+          Required Fields *
+        </span>
+        <div className="col-lg-3 mb-3 mx-auto">
+          <label htmlFor="validationServer01" className="form-label text-light"></label>
+          <input
+            type="text"
+            placeholder="Name *"
+            className={`form-control ${errors.firstName ? 'is-invalid' : ''}`}
+            name="firstName"
+            value={formData.firstName}
             onChange={handleChange}
-            required
           />
-          <div className="valid-feedback">
-            Looks good!
-          </div>
+          {errors.firstName && (
+            <div className="invalid-feedback d-block">
+              {errors.firstName}
+            </div>
+          )}
+        </div>
+        <div className="col-lg-3 mb-3 mx-auto">
+          <label htmlFor="validationServer02" className="form-label text-light"></label>
+          <input
+            type="text"
+            placeholder="Last Name *"
+            className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+
           {errors.lastName && <div className="invalid-feedback d-block">{errors.lastName}</div>}
         </div>
 
-        <div className="col-md-4">
-          <label htmlFor="validationServerUsername" className="form-label">Username</label>
+        <div className="col-lg-3 mb-3 mx-auto">
+          <label htmlFor="validationServerUsername" className="form-label text-light"></label>
           <div className="input-group has-validation">
             <span className="input-group-text" id="inputGroupPrepend3">@</span>
-            <input 
-              type="text" 
-              className={`form-control ${errors.username ? 'is-invalid' : ''}`}
-              id="validationServerUsername" 
-              name="username"
-              value={formData.username}
+            <input
+              type="text"
+              placeholder="E-mail *"
+              className={`form-control ${errors.Email ? 'is-invalid' : ''}`}
+              name="Email"
+              value={formData.Email}
               onChange={handleChange}
-              aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" 
-              required
             />
-            <div id="validationServerUsernameFeedback" className="invalid-feedback">
-              Please choose a username.
+            {errors.Email && (
+              <div className="invalid-feedback d-block">
+                {errors.Email}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="col-lg-3 mb-3 mx-auto">
+          <label htmlFor="validationServer03" className="form-label text-light"> </label>
+
+          <div className="input-group">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password *"
+              className={`form-control ${formData.password && !errors.password ? 'is-valid' : ''}`}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                backgroundColor:"transparent",
+                border:"1px solid rgba(255,255,255,0.4)",
+                color:"#fff",
+                transition:"all 0.25s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "#dc3545";
+                e.currentTarget.style.color = "#dc3545";
+                e.currentTarget.style.backgroundColor = "rgba(220,53,69,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+              e.currentTarget.style.color = "#fff";
+              e.currentTarget.style.backgroundColor = "#fff";
+            }}
+            >
+              {showPassword ? "🙈" : "👁"}
+            </button>
+          </div>
+
+          {errors.password && (
+            <div className="invalid-feedback d-block">
+              {errors.password}
             </div>
-          </div>
+          )}
         </div>
 
-        <div className="col-md-6 mx-auto">
-          <label htmlFor="validationServer03" className="form-label">City</label>
-          <input 
-            type="text" 
-            className={`form-control ${errors.city ? 'is-invalid' : ''}`}
-            id="validationServer03" 
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            aria-describedby="validationServer03Feedback" 
-            required
-          />
-          <div id="validationServer03Feedback" className="invalid-feedback">
-            Please provide a valid city.
+        <div className="col-lg-3 mb-3 mx-auto">
+          <label htmlFor="validationServer03" className="form-label text-light"> </label>
+
+          <div className="input-group">
+            <input
+              type={showRepeatPassword ? "text" : "password"}
+              placeholder="Repeat Password *"
+              className={`form-control ${formData.repeatPassword && !errors.repeatPassword ? 'is-valid' : ''} ${errors.repeatPassword ? 'is-invalid' : ''}`}
+              id="validationServer03"
+              name="repeatPassword"
+              value={formData.repeatPassword}
+              onChange={handleChange}
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+        style={{
+                backgroundColor:"transparent",
+                border:"1px solid rgba(255,255,255,0.4)",
+                color:"#fff",
+                transition:"all 0.25s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "#dc3545";
+                e.currentTarget.style.color = "#dc3545";
+                e.currentTarget.style.backgroundColor = "rgba(220,53,69,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+              e.currentTarget.style.color = "#fff";
+              e.currentTarget.style.backgroundColor = "#fff";
+            }}
+            >
+              {showRepeatPassword ? "🙈" : "👁"}
+            </button>
           </div>
+
+          {errors.repeatPassword && (
+            <div className="invalid-feedback d-block">
+              {errors.repeatPassword}
+            </div>
+          )}
         </div>
 
-        <div className="col-12">
+        <div className="col-12 d-flex max-auto justify-content-center mt-4">
           <div className="form-check">
-            <input 
+            <input
               className={`form-check-input ${errors.terms ? 'is-invalid' : ''}`}
-              type="checkbox" 
-              id="invalidCheck3" 
+              type="checkbox"
               name="terms"
               checked={formData.terms}
               onChange={handleChange}
-              aria-describedby="invalidCheck3Feedback" 
-              required
             />
-            <label className="form-check-label" htmlFor="invalidCheck3">
-              Agree to terms and conditions
+            {errors.terms && (
+              <div className="invalid-feedback d-block">
+                {errors.terms}
+              </div>
+            )}
+            <label className="form-check-label text-light " htmlFor="terms">
+              Agree to the <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+                Terms and Conditions
+              </span>
             </label>
-            <div id="invalidCheck3Feedback" className="invalid-feedback">
-              You must agree before submitting.
-            </div>
+
+
           </div>
         </div>
 
-        <div className="col-12">
-          <button className="btn btn-primary" type="submit">Submit form</button>
+        <div className="col-12 mt-5">
+          <button className="btn btn-danger" type="submit">Register</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
