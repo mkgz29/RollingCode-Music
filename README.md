@@ -81,6 +81,39 @@ RollingCode Music/
 ├── package.json
 └── vite.config.js
 ```
+## 🔐 Credenciales de Acceso (Testing)
+
+Para facilitar las pruebas del proyecto **Rolling Code Music**, se incluyen los siguientes usuarios de prueba con distintos roles dentro de la aplicación.
+
+### 👑 Administradores
+
+Estos usuarios tienen acceso completo al panel **Admin**, incluyendo gestión de canciones y funciones CRUD.
+
+* **[adminfacu@rolling.com](mailto:adminfacu@rolling.com)**
+  Password: `123456789`
+
+* **[adminmike@rolling.com](mailto:adminmike@rolling.com)**
+  Password: `maikisita1234`
+
+* **[adminbenja@rolling.com](mailto:adminbenja@rolling.com)**
+  Password: `987654321`
+
+---
+
+### 🎧 Usuario Invitado (INVITED)
+
+Cuenta con permisos limitados dentro de la plataforma.
+
+* **[gonzavip@rolling.com](mailto:gonzavip@rolling.com)**
+  Password: `gonza1234`
+  Welcome Message: 🎵 Welcome Gonza to Rolling Code Music
+
+---
+
+⚠️ **Importante:**
+Estas credenciales están pensadas únicamente para entorno de desarrollo y demostración académica. No utilizar en producción real.
+
+
 
 ## 🔧 Configuración
 
