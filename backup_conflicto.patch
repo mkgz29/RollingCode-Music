@@ -1,0 +1,511 @@
+diff --cc src/App.jsx
+index 4b2d1f1,4e12d5d..0000000
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@@ -1,37 -1,35 +1,68 @@@
+- import { useEffect } from 'react';
+- import { seedUsers } from './auth/authSeed';
+- import './App.css'
+- import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+++import { useEffect } from "react";
+++import { seedUsers } from "./auth/authSeed";
++ import "./App.css";
+ -import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+++
+++import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
++ import { AnimatePresence } from "framer-motion";
+  
+  import Home from "./pages/Home";
+  import Admin from "./pages/Admin";
+- import RequireRole from './auth/RequireRole';
+- import{ ROLES } from './auth/roles';
+++import RequireRole from "./auth/RequireRole";
+++import { ROLES } from "./auth/roles";
+  import Detail from "./pages/Detail";
+  import About from "./pages/About";
+  import Login from "./pages/Login";
+- import Register from './pages/Register';
+--import NotFound from "./pages/Notfound";
+- import AuthRedirect from './components/AuthRedirect';
+++import Register from "./pages/Register";
+++import AuthRedirect from "./components/AuthRedirect";
+ +
+- function App() {
+  
+-   useEffect(() => {
+-     seedUsers();
+-   }, []);
+++// 🔥 Rutas animadas
++ function AnimatedRoutes() {
++   const location = useLocation();
++ 
+    return (
+-     <BrowserRouter>
+-       <Routes>
++     <AnimatePresence mode="wait">
++       <Routes location={location} key={location.pathname}>
+ -        <Route path="/" element={<Home />} />
+ -        <Route path="/admin" element={<Admin />} />
+ +        <Route path="/" element={<Navigate to="/login" replace />} />
+-         <Route path="/home" element={<AuthRedirect>
+-           <Home /></AuthRedirect>} />
+-         <Route path="/admin" element={<RequireRole allowedRoles={[ROLES.ADMIN]}><Admin /></RequireRole>} />
+++
+++        <Route
+++          path="/home"
+++          element={
+++            <AuthRedirect>
+++              <Home />
+++            </AuthRedirect>
+++          }
+++        />
+++
+++        <Route
+++          path="/admin"
+++          element={
+++            <RequireRole allowedRoles={[ROLES.ADMIN]}>
+++              <Admin />
+++            </RequireRole>
+++          }
+++        />
+++
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+ +        <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
++     </AnimatePresence>
++   );
++ }
++ 
+++
+++// 🔥 App principal
++ function App() {
+++  useEffect(() => {
+++    seedUsers();
+++  }, []);
+++
++   return (
++     <BrowserRouter>
++       <AnimatedRoutes />
+      </BrowserRouter>
+    );
+  }
+diff --cc src/pages/About.jsx
+index 913c661,3fb4cc3..0000000
+--- a/src/pages/About.jsx
++++ b/src/pages/About.jsx
+@@@ -1,94 -1,13 +1,85 @@@
+  import Navbar from "../components/navbar";
+  
+ -
+  const About = () => {
+    return (
+ -  <div>
+ -  { <Navbar />}
+ -  <h1>About</h1>;
+ -  </div>
+ -  )
+ +    <div className="container-fluid min-vh-100 bg-dark text-light">
+ +      <div className="row min-vh-100">
+ +
+-         
+ +        <aside className="col-12 col-md-3 col-lg-2 p-3 border-end border-secondary">
+ +          <Navbar />
+ +        </aside>
+ +
+ +        <main className="col-12 col-md-9 col-lg-10 p-4">
+-           <div className="row g-4 justify-content-center position-relative"style={{top:"90px"}}>
+-            
+-             <div className="col-12 col-md-6 col-lg-5 d-flex flex-column position-relative">
+- 
+-   
+-   <div className="card text-light shadow-lg border border-secondary bg-transparent glass-card mb-5">
+-     <div className="card-body text-center d-flex flex-column">
+-       <img
+-         src="/src/assets/img/your-photo.jpg"
+-         alt="Facundo Solano"
+-         className="img-fluid rounded-circle mb-3 mx-auto"
+-         style={{ width: "150px", height: "150px", objectFit: "cover" }}
+-       />
+- 
+-       <h5 className="card-title">Facundo Solano</h5>
+- 
+-       <p className="card-text">
+-         Desarrollador frontend en formación, enfocado en React,
+-         Bootstrap y buenas prácticas de UX/UI.
+-       </p>
+-     </div>
+-   </div>
+- 
+-   
+-   <div style={{ height: "200px" }} />
+- 
+-   
+-   <div className="card text-light shadow-lg border border-secondary bg-transparent glass-card">
+-     <div className="card-body text-center d-flex flex-column">
+-       <img
+-         src="/src/assets/img/third-photo.jpg"
+-         alt="Benja"
+-         className="img-fluid rounded-circle mb-3 mx-auto"
+-         style={{ width: "150px", height: "150px", objectFit: "cover" }}
+-       />
+- 
+-       <h5 className="card-title">Benja</h5>
+- 
+-       <p className="card-text">
+-         Proyecto colaborativo enfocado en React, diseño responsive
+-         y buenas prácticas de desarrollo frontend.
+-       </p>
+-     </div>
+-   </div>
+- </div>
+- 
+- 
+++          <div className="row g-4 justify-content-center position-relative" style={{ top: "90px" }}>
+ +
+- <div className="col-12 col-md-6 col-lg-5 d-flex align-items-center">
+-   <div className="card text-light shadow-lg border border-secondary bg-transparent glass-card mt-4">
+-     <div className="card-body text-center d-flex flex-column">
+-       <img
+-         src="/src/assets/img/partner-photo.jpg"
+-         alt="Miguel Ramon"
+-         className="img-fluid rounded-circle mb-3 mx-auto"
+-         style={{ width: "150px", height: "150px", objectFit: "cover" }}
+-       />
+- 
+-       <h5 className="card-title">Ramon Gomez</h5>
+- 
+-       <p className="card-text">
+-         Desarrollador frontend con foco en diseño, estructura
+-         y trabajo en equipo.
+-       </p>
+-     </div>
+-   </div>
+- </div>
+- 
+-       
+-             
+++            <div className="col-12 col-md-6 col-lg-5 d-flex flex-column position-relative">
+ +
+++              <div className="card text-light shadow-lg border border-secondary bg-transparent glass-card mb-5">
+++                <div className="card-body text-center d-flex flex-column">
+++                  <img
+++                    src="/src/assets/img/your-photo.jpg"
+++                    alt="Facundo Solano"
+++                    className="img-fluid rounded-circle mb-3 mx-auto"
+++                    style={{ width: "150px", height: "150px", objectFit: "cover" }}
+++                  />
+++
+++                  <h5 className="card-title">Facundo Solano</h5>
+++
+++                  <p className="card-text">
+++                    Desarrollador frontend en formación, enfocado en React,
+++                    Bootstrap y buenas prácticas de UX/UI.
+++                  </p>
+++                </div>
+++              </div>
+++
+++              <div style={{ height: "200px" }} />
+++
+++              <div className="card text-light shadow-lg border border-secondary bg-transparent glass-card">
+++                <div className="card-body text-center d-flex flex-column">
+++                  <img
+++                    src="/src/assets/img/third-photo.jpg"
+++                    alt="Benja"
+++                    className="img-fluid rounded-circle mb-3 mx-auto"
+++                    style={{ width: "150px", height: "150px", objectFit: "cover" }}
+++                  />
+++
+++                  <h5 className="card-title">Benja</h5>
+++
+++                  <p className="card-text">
+++                    Proyecto colaborativo enfocado en React, diseño responsive
+++                    y buenas prácticas de desarrollo frontend.
+++                  </p>
+++                </div>
+++              </div>
+++
+++            </div>
+++
+++            <div className="col-12 col-md-6 col-lg-5 d-flex align-items-center">
+++              <div className="card text-light shadow-lg border border-secondary bg-transparent glass-card mt-4">
+++                <div className="card-body text-center d-flex flex-column">
+++                  <img
+++                    src="/src/assets/img/partner-photo.jpg"
+++                    alt="Miguel Ramon"
+++                    className="img-fluid rounded-circle mb-3 mx-auto"
+++                    style={{ width: "150px", height: "150px", objectFit: "cover" }}
+++                  />
+++
+++                  <h5 className="card-title">Ramon Gomez</h5>
+++
+++                  <p className="card-text">
+++                    Desarrollador frontend con foco en diseño, estructura
+++                    y trabajo en equipo.
+++                  </p>
+++                </div>
+++              </div>
+++            </div>
+ +
+ +          </div>
+ +        </main>
+ +
+ +      </div>
+ +    </div>
+ +  );
+  };
+  
+  export default About;
+diff --cc src/styles/global.css
+index 579b333,4a5ee6a..0000000
+--- a/src/styles/global.css
++++ b/src/styles/global.css
+@@@ -78,64 -78,118 +78,144 @@@ button:focus-visible 
+    }
+  }
+  
+ -
+ -* {
+ -  margin: 0;
+ -  padding: 0;
+ -  box-sizing: border-box;
+ +.page-bg{
+ +  min-height:100vh;
+ +  background-image: url("../assets/img/cover2.pgn.jpeg");
+ +  background-size: cover;
+ +  background-position: center;
+ +  background-repeat: no-repeat;
+  }
+  
+ -body {
+ -  margin: 0;
+ -  padding: 0;
+ -  background-color: #000000;
+ +#shadowcd {
+-   color:aliceblue;
+++  color: aliceblue;
+ +  padding-bottom: 8px;
+  }
+  
+ -#root {
+ -  margin: 0;
+ -  padding: 0;
+ +#shadowcd2 {
+ +  color:rgb(255, 240, 240);
+ +  padding-bottom: 57px; 
+  }
+  
+ -
+ -.nav-link {
+ -  transition: all 0.3s ease;
+ -  position: relative;
+ +.glass-card{
+ +  background:rgba(255, 255, 255, 0.05);
+ +  backdrop-filter: blur(12px);
+ +  -webkit-backdrop-filter: blur(12px);
+ +  border-radius:16px;
+ +  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+ -.nav-link:hover {
+ -  text-shadow: 0 5px 15px #ff021b, 0 0 25px #ff021b;
+ -  color: #fff !important;
+ +.glass-card:hover{
+ +  transform: translateY(-6px);
+ +  box-shadow: 0 20px 40px  rgba(0, 0, 0, 0.04);
+  }
+  
+ -.nav-link:hover svg {
+ -  filter: drop-shadow(0 0 8px #ff021b);
+ +.form-check-input[type="checkbox"]:checked {
+ +  background-color: #dc3545;
+ +  border-color: #dc3545;
+ +  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3e%3c/svg%3e");
+ +}
+ +.form-check-input[type="checkbox"]:focus {
+ +  border-color: #dc3545;
+ +  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.4);
+ +}
+ +.required-fields {
+ +  position: absolute;
+ +  top: 420px;
+ +  right: 397px;
+ +  color: #f4061d;
+ +  font-size: 18px;
+ +  text-decoration: underline;
+ +  opacity: 0.9;
+ +  
+ +}
+- 
+- .required-fields2 {
+++ .required-fields2 {
+ +  position: absolute;
+ +  top: 507px;
+ +  right: 377px;
+ +  color: #f4061d;
+ +  font-size: 18px;
+ +  text-decoration: underline;
+ +  opacity: 0.9;
+-   
+- }
++ }
+ -
++ 
++ .form-control:focus {
++   border-color: #ff021b !important;
++   box-shadow: 0 0 0 0.25rem rgba(255, 2, 27, 0.25) !important;
++ }
++ 
++ #homewrapper {
++   background-color: #000000;
++ }
++ 
++ .hover-item:hover {
++   background: rgba(255,255,255,0.08);
++ }
++ 
++ .detail-logo {
++   position: fixed;
++   top: 30px;
++   left: 20px;
++   z-index: 1000;
++   cursor: pointer;
++ }
++ 
++ .detail-logo img {
++   width: 68px;
++   height: 58px;
++   border-radius: 50%;
++   transition: transform 0.2s ease, opacity 0.2s ease;
++ }
++ 
++ .detail-logo img:hover {
++   transform: scale(1.08);
++   opacity: 0.85;
++ }
++ 
++ .thin-scroll {
++   scrollbar-width: thin;                       /* Firefox */
++   scrollbar-color: rgba(255,255,255,.25) transparent; /* Firefox */
++ }
++ 
++ .thin-scroll::-webkit-scrollbar {
++   width: 8px;                                 /* Chrome/Edge */
++ }
++ 
++ .thin-scroll::-webkit-scrollbar-track {
++   background: transparent;
++ }
++ 
++ .thin-scroll::-webkit-scrollbar-thumb {
++   background: rgba(255,255,255,.22);
++   border-radius: 12px;
++   border: 2px solid transparent;              /* efecto “píldora” */
++   background-clip: padding-box;
++ }
++ 
++ .thin-scroll::-webkit-scrollbar-thumb:hover {
++   background: rgba(255,255,255,.35);
++   background-clip: padding-box;
++ }
++ 
++ .volume-slider {
++   width: 120px;
++   height: 4px;
++   appearance: none;
++   background: #444;
++   border-radius: 999px;
++   cursor: pointer;
++ }
++ 
++ .volume-slider::-webkit-slider-thumb {
++   appearance: none;
++   width: 12px;
++   height: 12px;
++   border-radius: 50%;
++   background: #1db954; /* verde spotify */
++ }
++ 
++ .volume-slider::-moz-range-thumb {
++   width: 12px;
++   height: 12px;
++   border-radius: 50%;
++   background: #1db954;
+ -}
+++}
+diff --git a/src/components/Songlist.jsx b/src/components/Songlist.jsx
+index 89ec326..1229def 100644
+--- a/src/components/Songlist.jsx
++++ b/src/components/Songlist.jsx
+@@ -1,13 +1,9 @@
+-import { useEffect, useState } from "react";
++import { useState } from "react";
+ import { getSongs } from "../data/songsStorage";
+ import SongCard from "./SongCard.jsx";
+ 
+ const Songlist = () => {
+-  const [songs, setSongs] = useState([]);
+-
+-  useEffect(() => {
+-    setSongs(getSongs());
+-  }, []);
++  const [songs] = useState(() => getSongs());
+ 
+   if (songs.length === 0) {
+     return (
+diff --git a/src/data/song.js b/src/data/song.js
+index f7a591b..6820e18 100644
+--- a/src/data/song.js
++++ b/src/data/song.js
+@@ -1,6 +1,3 @@
+-import cover1 from '../assets/img/cover1.png';
+-
+-
+ export const songs = [{
+     id:"1",
+     title: "Noche de Estrellas",
+diff --git a/src/pages/Detail.jsx b/src/pages/Detail.jsx
+index 3d0847c..a7e63dd 100644
+--- a/src/pages/Detail.jsx
++++ b/src/pages/Detail.jsx
+@@ -8,7 +8,6 @@ import Aside from "../components/Asidesong";
+ import SearchForm from "../components/SearchForm";
+ import { Link } from "react-router-dom";
+ import logo from "../assets/img/donelog.png";
+-import { motion } from "framer-motion";
+ 
+ const Detail = () => {
+   const { id } = useParams();
+@@ -20,7 +19,6 @@ useEffect(() => {
+   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+ }, [id]);
+   useEffect(() => {
+-    setCanAutoPlay(false);
+     const timer = setTimeout(() => {
+       setCanAutoPlay(true);
+     }, 700);
+@@ -31,13 +29,7 @@ useEffect(() => {
+   if (!song) return <p>Canción no encontrada</p>;
+ 
+   return (
+-<motion.div
+-  initial={{ x: 100, opacity: 0 }}
+-  animate={{ x: 0, opacity: 1 }}
+-  exit={{ x: -100, opacity: 0 }}
+-  transition={{ duration: 0.5, ease: "easeOut" }}
+->
+-      <div className="container-fluid py-3">
++    <div className="container-fluid py-3">
+         <div className="row g-4">
+           <div className="col-12 col-xl-8">
+             <Link to="/" className="detail-logo">
+@@ -53,7 +45,6 @@ useEffect(() => {
+           </div>
+         </div>
+       </div>
+-    </motion.div>
+   );
+ };
+ 
