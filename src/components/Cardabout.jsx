@@ -13,7 +13,7 @@ const Cardabout = ({ cards }) => {
     <>
       {cards.map((card) => (
         <div className="col-md-4" key={card.id}>
-          <div className="card bg-dark text-light h-100 border-0 shadow-sm">
+          <div className="card bg-dark text-light h-100 border-0 shadow-sm about-card">
             <img
               src={images[card.img]}
               className="card-img-top"

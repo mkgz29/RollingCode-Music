@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FAQ from "../components/FAQ";
 
 const SubscribeForm = ({ plan }) => {
   const [email, setEmail] = useState("");

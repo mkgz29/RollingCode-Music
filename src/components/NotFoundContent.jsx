@@ -5,7 +5,6 @@ const NotFoundContent = ({ title, message, image, redirectTo = "/" }) => {
   const [seconds, setSeconds] = useState(8);
   const navigate = useNavigate();
 
-  // contador
   useEffect(() => {
     if (seconds === 0) {
       navigate(redirectTo);
@@ -39,13 +38,15 @@ export default NotFoundContent;
 
 const styles = {
   container: {
-    minHeight: "80vh",
+    minHeight: "100vh",
+    backgroundColor: "#000",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     gap: "1rem",
     textAlign: "center",
+    color: "#fff",
   },
   image: {
     maxWidth: "300px",

@@ -1,5 +1,7 @@
 import Navbar from "../components/Navbar";
 import Cardabout from "../components/Cardabout";
+import Faq from "../components/Faq";
+import questions from "../data/questions";
 
 function About() {
   const cardsInfo = [
@@ -27,20 +29,25 @@ function About() {
     <>
       <Navbar />
 
-      <main className="bg-dark text-light">
+      <main className="bg-black text-light min-vh-100 pt-5 main-content">
         <section className="container py-5 text-center">
           <h1 className="fw-bold display-5">¿Que es RollingCode Music?</h1>
           <p className="mt-3">
-            Es una aplicación web de música desarrollada como proyecto de
-            aprendizaje en React.
+            RollingCode Music es una aplicación web de música creada con React,
+            pensada para practicar el desarrollo de interfaces interactivas y
+            una experiencia de usuario inspirada en plataformas de streaming
+            actuales.
           </p>
         </section>
 
         <section className="container py-4">
           <h2 className="text-center mb-4">El proyecto</h2>
           <p>
-            RollingCode Music es una plataforma que permite reproducir música,
-            explorar tus canciones favoritas y escucharlas cuando quieras.
+            El proyecto simula una plataforma de streaming musical donde los
+            usuarios pueden explorar contenido, conocer distintos planes de
+            suscripción y navegar por una experiencia similar a aplicaciones
+            reales del mercado, aplicando buenas prácticas de desarrollo
+            frontend.
           </p>
         </section>
 
@@ -63,12 +70,15 @@ function About() {
               "Git & GitHub",
             ].map((tech) => (
               <div key={tech} className="col-6 col-md-4 col-lg-2">
-                <div className="bg-secondary bg-opacity-10 text-center py-2 rounded">
+                <div className="bg-danger bg-opacity-75 text-light text-center py-2 rounded fw-semibold">
                   {tech}
                 </div>
               </div>
             ))}
           </div>
+        </section>
+        <section className="bg-dark py-5">
+          <Faq items={questions} />
         </section>
       </main>
     </>

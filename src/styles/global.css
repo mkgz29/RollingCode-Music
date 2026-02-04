@@ -78,7 +78,6 @@ button:focus-visible {
   }
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -96,21 +95,21 @@ body {
   padding: 0;
 }
 
-
 .nav-link {
   transition: all 0.3s ease;
   position: relative;
 }
 
 .nav-link:hover {
-  text-shadow: 0 5px 15px #ff021b, 0 0 25px #ff021b;
+  text-shadow:
+    0 5px 15px #ff021b,
+    0 0 25px #ff021b;
   color: #fff !important;
 }
 
 .nav-link:hover svg {
   filter: drop-shadow(0 0 8px #ff021b);
 }
-
 
 .form-control:focus {
   border-color: #ff021b !important;
@@ -122,7 +121,7 @@ body {
 }
 
 .hover-item:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .detail-logo {
@@ -137,7 +136,9 @@ body {
   width: 68px;
   height: 58px;
   border-radius: 50%;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .detail-logo img:hover {
@@ -146,12 +147,12 @@ body {
 }
 
 .thin-scroll {
-  scrollbar-width: thin;                       /* Firefox */
-  scrollbar-color: rgba(255,255,255,.25) transparent; /* Firefox */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent; /* Firefox */
 }
 
 .thin-scroll::-webkit-scrollbar {
-  width: 8px;                                 /* Chrome/Edge */
+  width: 8px; /* Chrome/Edge */
 }
 
 .thin-scroll::-webkit-scrollbar-track {
@@ -159,14 +160,14 @@ body {
 }
 
 .thin-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.22);
+  background: rgba(255, 255, 255, 0.22);
   border-radius: 12px;
-  border: 2px solid transparent;              /* efecto “píldora” */
+  border: 2px solid transparent; /* efecto “píldora” */
   background-clip: padding-box;
 }
 
 .thin-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,.35);
+  background: rgba(255, 255, 255, 0.35);
   background-clip: padding-box;
 }
 
@@ -192,4 +193,97 @@ body {
   height: 12px;
   border-radius: 50%;
   background: #1db954;
+}
+.accordion-button:hover,
+.accordion-button.collapsed:hover {
+  color: #dc3545 !important;
+  background-color: transparent !important;
+}
+.accordion-button:not(.collapsed) {
+  color: #dc3545 !important;
+  background-color: transparent !important;
+}
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+.faq-btn {
+  transition: all 0.25s ease;
+}
+
+.faq-btn:hover {
+  color: #ff3b3b;
+}
+
+.faq-btn:not(.collapsed) {
+  color: #ff3b3b;
+}
+.faq-btn:hover {
+  color: #ff3b3b;
+  text-shadow: 0 0 6px rgba(255, 59, 59, 0.6);
+}
+.main-content {
+  margin-left: 0;
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    margin-left: 250px;
+  }
+}
+.about-card {
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.about-card-img {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(220, 53, 69, 0.8);
+}
+
+.about-card:hover .about-card-img {
+  transform: scale(1.08);
+}
+
+.about-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  box-shadow: 0 0 35px rgba(220, 53, 69, 0.9);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.about-card:hover::after {
+  opacity: 1;
+}
+
+.about-card .card-title {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.about-card .card-text {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+.plan-card {
+  transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(220, 53, 69, 0.6);
 }
