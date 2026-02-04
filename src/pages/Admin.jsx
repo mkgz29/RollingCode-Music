@@ -66,8 +66,8 @@ export default function Admin() {
   return (
     <div style={{ backgroundColor: "#000", minHeight: "100vh" }}>
       <Navbar />
-      <main className="p-3 p-md-5 text-white" style={{ marginLeft: "0", paddingTop: "20px", maxWidth: "100%" }}>
-        <div style={{ marginLeft: "270px", maxWidth: "1400px" }}>
+      <main className="p-3 p-md-5 text-white" style={{ paddingTop: "20px" }}>
+        <div className="admin-content">
           <div className="text-center mb-5">
             <h1 className="fw-bold display-4" style={{ color: "#fff" }}>Administration Panel</h1>
             <p style={{ color: "#b3b3b3" }}>Manage your music library</p>
@@ -309,9 +309,15 @@ export default function Admin() {
         </div>
         
         <style>{`
+          .admin-content {
+            margin-left: 270px;
+            max-width: 1400px;
+          }
+          
           @media (max-width: 992px) {
-            main > div {
+            .admin-content {
               margin-left: 0 !important;
+              max-width: 100%;
             }
           }
         `}</style>
