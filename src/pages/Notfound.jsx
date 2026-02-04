@@ -1,5 +1,5 @@
 import NotFoundContent from "../components/NotFoundContent";
-import error404 from "../assets/404.png";
+import error404 from "../assets/img/404.png";
 
 const NotFound = () => {
   return (

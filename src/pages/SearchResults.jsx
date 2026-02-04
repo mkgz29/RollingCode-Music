@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import SearchResultsList from "../components/SearchSongList";
 import { searchSongs } from "../services/itunesApi";
 import SearchForm from "../components/SearchForm";
