@@ -19,7 +19,6 @@ const Subscribe = () => {
     <>
       <Navbar />
       <main className="main-content bg-black text-light min-vh-100" style={{ overflowX: "hidden", maxWidth: "100%" }}>
-        {/* Hero Section */}
         <motion.div 
           className="container-fluid py-5"
           initial="hidden"
@@ -57,7 +56,7 @@ const Subscribe = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Try 2 months free on any plan - Then only $2499/month - Cancel anytime
+              Try 2 months free on any plan - Then only $9.99/month - Cancel anytime
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -89,7 +88,6 @@ const Subscribe = () => {
           </div>
         </motion.div>
 
-        {/* Plans Section */}
         <div className="container-fluid py-5" style={{ backgroundColor: "#0a0a0a", overflowX: "hidden" }}>
           <motion.div
             initial="hidden"
@@ -139,7 +137,6 @@ const Subscribe = () => {
           </motion.div>
         </div>
 
-        {/* FAQ Section */}
         <div className="container-fluid py-5" style={{ backgroundColor: "#000" }}>
           <motion.div
             initial="hidden"
