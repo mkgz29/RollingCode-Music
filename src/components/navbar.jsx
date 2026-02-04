@@ -3,7 +3,7 @@ import logo from "../assets/img/logonavbar.png";
 import { AiFillHome } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { FaMusic } from "react-icons/fa";
+import { FaMusic, FaCrown } from "react-icons/fa";
 import { RiLoginCircleFill } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
@@ -13,101 +13,125 @@ const Navbar = ({ onSearchToggle }) => {
 
   return (
     <>
-      <button 
-        className="btn btn-dark d-lg-none position-fixed m-2" 
-        style={{ top: '0', left: '0', zIndex: 1050 }}
+      <button
+        className="btn btn-dark d-lg-none position-fixed m-2"
+        style={{ top: "0", left: "0", zIndex: 1050 }}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="navbar-toggler-icon" style={{ 
-          backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\")",
-          display: 'inline-block',
-          width: '1.5em',
-          height: '1.5em'
-        }}></span>
+        <span
+          className="navbar-toggler-icon"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\")",
+            display: "inline-block",
+            width: "1.5em",
+            height: "1.5em",
+          }}
+        ></span>
       </button>
 
-      <button 
-        className="btn btn-dark d-lg-none position-fixed m-2" 
-        style={{ top: '0', right: '0', zIndex: 1050 }}
+      <button
+        className="btn btn-dark d-lg-none position-fixed m-2"
+        style={{ top: "0", right: "0", zIndex: 1050 }}
         onClick={onSearchToggle}
       >
         <IoIosSearch size={24} />
       </button>
 
-      <nav 
-        className={`bg-black text-white d-flex flex-column vh-100 position-fixed ${isOpen ? '' : 'd-none'} d-lg-flex`} 
-        style={{ 
-          width: '250px', 
-          left: 0, 
+      <nav
+        className={`bg-black text-white d-flex flex-column vh-100 position-fixed ${isOpen ? "" : "d-none"} d-lg-flex`}
+        style={{
+          width: "250px",
+          left: 0,
           top: 0,
-          zIndex: 1040
+          zIndex: 1040,
         }}
       >
-        <div className="text-center py-4 border-bottom border-secondary">
+        <div className="text-center py-3 border-bottom border-secondary">
           <Link to="/" onClick={() => setIsOpen(false)}>
-            <img 
-              src={logo} 
-              alt="RollingCode Music Logo" 
-              style={{ 
-                height: '70px', 
-                width: 'auto',
-                maxWidth: '100%'
-              }} 
+            <img
+              src={logo}
+              alt="RollingCode Music Logo"
+              style={{
+                height: "70px",
+                width: "auto",
+                maxWidth: "100%",
+              }}
             />
           </Link>
         </div>
-        <ul className="nav flex-column flex-grow-1 mt-4 px-3">
+        <ul className="nav flex-column flex-grow-1 mt-3 px-3">
           <li className="nav-item mb-2">
-            <NavLink 
-              className={({ isActive }) => 
-                `nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded ${isActive ? 'bg-danger' : ''}`
-              }
-              to="/" 
+            <NavLink
+              to="/home"
               onClick={() => setIsOpen(false)}
+              style={({ isActive }) => ({
+                backgroundColor: isActive ? "#dc3545" : "transparent",
+                transition: "all 0.3s ease"
+              })}
+              className="nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded"
             >
               <AiFillHome size={22} />
-              <span style={{ fontSize: '16px', fontWeight: '500' }}>Home</span>
+              <span style={{ fontSize: "16px", fontWeight: "500" }}>Home</span>
             </NavLink>
           </li>
           <li className="nav-item mb-2">
-            <NavLink 
-              className={({ isActive }) => 
-                `nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded ${isActive ? 'bg-danger' : ''}`
-              }
-              to="/about" 
+            <NavLink
+              to="/about"
               onClick={() => setIsOpen(false)}
+              style={({ isActive }) => ({
+                backgroundColor: isActive ? "#dc3545" : "transparent",
+                transition: "all 0.3s ease"
+              })}
+              className="nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded"
             >
               <BsInfoCircle size={22} />
-              <span style={{ fontSize: '16px', fontWeight: '500' }}>About</span>
+              <span style={{ fontSize: "16px", fontWeight: "500" }}>About</span>
             </NavLink>
           </li>
           <li className="nav-item mb-2">
-            <NavLink 
-              className={({ isActive }) => 
-                `nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded ${isActive ? 'bg-danger' : ''}`
-              }
-              to="/admin" 
+            <NavLink
+              to="/subscribe"
               onClick={() => setIsOpen(false)}
+              style={({ isActive }) => ({
+                backgroundColor: isActive ? "#dc3545" : "transparent",
+                transition: "all 0.3s ease"
+              })}
+              className="nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded"
+            >
+              <FaCrown size={22} />
+              <span style={{ fontSize: "16px", fontWeight: "500" }}>Subscribe</span>
+            </NavLink>
+          </li>
+          <li className="nav-item mb-2">
+            <NavLink
+              to="/admin"
+              onClick={() => setIsOpen(false)}
+              style={({ isActive }) => ({
+                backgroundColor: isActive ? "#dc3545" : "transparent",
+                transition: "all 0.3s ease"
+              })}
+              className="nav-link text-white d-flex align-items-center gap-3 px-3 py-2 rounded"
             >
               <MdAdminPanelSettings size={22} />
-              <span style={{ fontSize: '16px', fontWeight: '500' }}>Admin</span>
+              <span style={{ fontSize: "16px", fontWeight: "500" }}>Admin</span>
             </NavLink>
           </li>
         </ul>
-        <div className="d-flex flex-column gap-2 px-3 pb-4 border-top border-secondary pt-3">
-          <NavLink 
-            className="btn btn-outline-light w-100 py-2" 
-            to="/register" 
+        <div className="d-flex flex-column gap-2 px-3 pb-3 border-top border-secondary pt-3">
+          <NavLink
+            className="btn btn-outline-light w-100 py-2"
+            to="/register"
             onClick={() => setIsOpen(false)}
-            style={{ fontSize: '15px', fontWeight: '500' }}
+            style={{ fontSize: "15px", fontWeight: "500" }}
           >
             Register
           </NavLink>
-          <NavLink 
-            className="btn btn-danger w-100 py-2" 
-            to="/login" 
+          <NavLink
+            className="btn btn-danger w-100 py-2"
+            to="/login"
             onClick={() => setIsOpen(false)}
-            style={{ fontSize: '15px', fontWeight: '500' }}
+            style={{ fontSize: "15px", fontWeight: "500" }}
           >
             Login
           </NavLink>
@@ -116,9 +140,14 @@ const Navbar = ({ onSearchToggle }) => {
 
       {/* Overlay oscuro cuando el menú está abierto en móvil */}
       {isOpen && (
-        <div 
-          className="d-lg-none position-fixed w-100 h-100" 
-          style={{ top: 0, left: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1030 }}
+        <div
+          className="d-lg-none position-fixed w-100 h-100"
+          style={{
+            top: 0,
+            left: 0,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            zIndex: 1030,
+          }}
           onClick={() => setIsOpen(false)}
         />
       )}

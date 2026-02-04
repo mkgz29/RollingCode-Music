@@ -28,17 +28,27 @@ a:hover {
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: #000000;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
 }
 
 #root {
   margin: 0;
   padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -78,7 +88,6 @@ button:focus-visible {
   }
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -89,13 +98,16 @@ body {
   margin: 0;
   padding: 0;
   background-color: #000000;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 #root {
   margin: 0;
   padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
-
 
 .nav-link {
   transition: all 0.3s ease;
@@ -103,14 +115,15 @@ body {
 }
 
 .nav-link:hover {
-  text-shadow: 0 5px 15px #ff021b, 0 0 25px #ff021b;
+  text-shadow:
+    0 5px 15px #ff021b,
+    0 0 25px #ff021b;
   color: #fff !important;
 }
 
 .nav-link:hover svg {
   filter: drop-shadow(0 0 8px #ff021b);
 }
-
 
 .form-control:focus {
   border-color: #ff021b !important;
@@ -122,7 +135,7 @@ body {
 }
 
 .hover-item:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .detail-logo {
@@ -137,7 +150,9 @@ body {
   width: 50px;
   height: 43px;
   border-radius: 50%;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .detail-logo img:hover {
@@ -150,7 +165,7 @@ body {
     top: 30px;
     left: 20px;
   }
-  
+
   .detail-logo img {
     width: 68px;
     height: 58px;
@@ -158,12 +173,12 @@ body {
 }
 
 .thin-scroll {
-  scrollbar-width: thin;                       
-  scrollbar-color: rgba(255,255,255,.25) transparent; 
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 
 .thin-scroll::-webkit-scrollbar {
-  width: 8px;                                 
+  width: 8px;
 }
 
 .thin-scroll::-webkit-scrollbar-track {
@@ -171,14 +186,14 @@ body {
 }
 
 .thin-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.22);
+  background: rgba(255, 255, 255, 0.22);
   border-radius: 12px;
-  border: 2px solid transparent;            
+  border: 2px solid transparent;
   background-clip: padding-box;
 }
 
 .thin-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,.35);
+  background: rgba(255, 255, 255, 0.35);
   background-clip: padding-box;
 }
 
@@ -196,7 +211,7 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #1db954; 
+  background: #1db954;
 }
 
 .volume-slider::-moz-range-thumb {
@@ -205,7 +220,99 @@ body {
   border-radius: 50%;
   background: #1db954;
 }
+.accordion-button:hover,
+.accordion-button.collapsed:hover {
+  color: #dc3545 !important;
+  background-color: transparent !important;
+}
+.accordion-button:not(.collapsed) {
+  color: #dc3545 !important;
+  background-color: transparent !important;
+}
+.accordion-button:focus {
+  box-shadow: none !important;
+}
 
+.faq-btn {
+  transition: all 0.25s ease;
+}
+
+.faq-btn:hover {
+  color: #ff3b3b;
+}
+
+.faq-btn:not(.collapsed) {
+  color: #ff3b3b;
+}
+.faq-btn:hover {
+  color: #ff3b3b;
+  text-shadow: 0 0 6px rgba(255, 59, 59, 0.6);
+}
+.main-content {
+  margin-left: 0;
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    margin-left: 250px;
+  }
+}
+.about-card {
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.about-card-img {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(220, 53, 69, 0.8);
+}
+
+.about-card:hover .about-card-img {
+  transform: scale(1.08);
+}
+
+.about-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  box-shadow: 0 0 35px rgba(220, 53, 69, 0.9);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.about-card:hover::after {
+  opacity: 1;
+}
+
+.about-card .card-title {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.about-card .card-text {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+.plan-card {
+  transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(220, 53, 69, 0.6);
+}
 
 .scroll-section::-webkit-scrollbar {
   height: 8px;
@@ -230,7 +337,6 @@ body {
   background: #555;
 }
 
-
 .scroll-section {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
@@ -239,7 +345,6 @@ body {
 .scroll-section:hover {
   scrollbar-color: #050505 #1a1a1a;
 }
-
 
 .search-suggestions {
   position: absolute;
@@ -272,33 +377,39 @@ body {
 
 .search-suggestions li:hover {
   background: #2a2a2a;
-}.search-suggestions li.active {
+}
+.search-suggestions li.active {
   background: #c2bdbd;
   color: #000000;
 }
 
-
 .form-control {
-  background-color: #ffffff !important;
-  color: #060606 !important;
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
   border-color: #333 !important;
 }
 
 .form-control::placeholder {
-  color: #888 !important;
+  color: #999 !important;
+  opacity: 1;
+}
+
+.form-control:focus {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
 }
 
 #shadowcd {
-  color:aliceblue;
+  color: aliceblue;
   padding-bottom: 8px;
 }
 
 #shadowcd2 {
-  color:rgb(255, 240, 240);
-  padding-bottom: 57px; 
+  color: rgb(255, 240, 240);
+  padding-bottom: 57px;
 }
-.page-bg{
-  min-height:100vh;
+.page-bg {
+  min-height: 100vh;
   background-image: url("../assets/img/cover2.pgn.jpeg");
   background-size: cover;
   background-position: center;
@@ -306,26 +417,28 @@ body {
 }
 
 #shadowcd {
-  color:aliceblue;
+  color: aliceblue;
   padding-bottom: 8px;
 }
 
 #shadowcd2 {
-  color:rgb(255, 240, 240);
-  padding-bottom: 57px; 
+  color: rgb(255, 240, 240);
+  padding-bottom: 57px;
 }
 
-.glass-card{
-  background:rgb(243, 243, 243);
+.glass-card {
+  background: rgb(243, 243, 243);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius:16px;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.glass-card:hover{
+.glass-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px  rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
 }
 
 .form-check-input[type="checkbox"]:checked {
@@ -336,4 +449,18 @@ body {
 .form-check-input[type="checkbox"]:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.4);
+}
+
+.main-content {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.row {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body {
+  overflow-x: clip;
 }

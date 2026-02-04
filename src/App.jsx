@@ -1,5 +1,11 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import { seedUsers } from "./auth/authSeed";
@@ -14,6 +20,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/Notfound";
+import Subscribe from "./pages/Subscribe";
 import AuthRedirect from "./components/AuthRedirect";
 import SearchResults from "./pages/SearchResults";
 
@@ -40,6 +47,7 @@ function AnimatedRoutes() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
